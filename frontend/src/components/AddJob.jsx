@@ -1,31 +1,20 @@
 import React from "react";
+import { Plus } from "lucide-react";
+import { Link } from "react-router";
 
 function AddJob(props) {
   const handleClick = () => {};
   return (
     <div>
-      <button
-        className="btn btn-secondary w-full text-xl"
-        onClick={() => document.getElementById("my_modal_2").showModal()}
-      >
-        Add Job
-      </button>
-      <dialog id="my_modal_2" className="modal">
-        <div className="modal-box h-fit">
-          <div className="card bg-base-100 ">
-            <h2 className="card-title mb-3">Add New Job</h2>
-            <div className="card-body ">
-              <form onSubmit={handleClick}>
-                <label>Title</label>
-                <input type="text" />
-              </form>
-            </div>
-          </div>
-        </div>
-        <form method="dialog" className="modal-backdrop">
-          <button>close</button>
-        </form>
-      </dialog>
+      <Link to={"/create"}>
+        {" "}
+        <button
+          className="btn btn-primary fixed  bottom-5 left-0 right-0  flex justify-center items-center mx-auto w-16 h-16 rounded-full "
+          onClick={() => handleClick}
+        >
+          <Plus size={40} />
+        </button>
+      </Link>
     </div>
   );
 }

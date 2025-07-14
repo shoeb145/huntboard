@@ -1,15 +1,35 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 function DarkModeToggle(props) {
+  const [theme, setTheme] = useState(localStorage.getItem("theme") || "forest");
+  const [icon, setIcon] = useState(true);
+  useEffect(() => {
+    const theme = localStorage.getItem("theme");
+    setIcon(theme == "forest" ? true : false);
+    document.documentElement.setAttribute("data-theme", theme);
+  }, []);
+  const handleChange = (e) => {
+    console.log(e.target.value);
+    const newTheme = theme === "forest" ? "synthwave" : "forest";
+    document.documentElement.setAttribute("data-theme", newTheme);
+    setTheme(newTheme);
+
+    localStorage.setItem("theme", newTheme);
+  };
   return (
     <div>
       <label className="swap swap-rotate">
         {/* this hidden checkbox controls the state */}
-        <input type="checkbox" className="theme-controller" value="forest" />
+        <input
+          type="checkbox"
+          className="theme-controller"
+          onChange={handleChange}
+          value={theme}
+        />
 
         {/* sun icon */}
         <svg
-          className="swap-off h-10 w-10 fill-current"
+          className={`${icon ? "swap-on" : "swap-off"} h-10 w-10 fill-current`}
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 24 24"
         >
@@ -18,7 +38,7 @@ function DarkModeToggle(props) {
 
         {/* moon icon */}
         <svg
-          className="swap-on h-10 w-10 fill-current"
+          className={`${icon ? "swap-off" : "swap-on"} h-10 w-10 fill-current`}
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 24 24"
         >

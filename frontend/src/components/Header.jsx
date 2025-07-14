@@ -3,7 +3,7 @@ import NavBar from "./NavBar";
 
 function Header(props) {
   return (
-    <header>
+    <header className="bg-base-300">
       <NavBar />
     </header>
   );
