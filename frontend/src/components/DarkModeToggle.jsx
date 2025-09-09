@@ -1,16 +1,16 @@
 import React, { useEffect, useState } from "react";
 
 function DarkModeToggle(props) {
-  const [theme, setTheme] = useState(localStorage.getItem("theme") || "forest");
+  const [theme, setTheme] = useState(localStorage.getItem("theme") || "black");
   const [icon, setIcon] = useState(true);
   useEffect(() => {
     const theme = localStorage.getItem("theme");
-    setIcon(theme == "forest" ? true : false);
+    setIcon(theme == "black" ? true : false);
     document.documentElement.setAttribute("data-theme", theme);
   }, []);
   const handleChange = (e) => {
     console.log(e.target.value);
-    const newTheme = theme === "forest" ? "synthwave" : "forest";
+    const newTheme = theme === "black" ? "light" : "black";
     document.documentElement.setAttribute("data-theme", newTheme);
     setTheme(newTheme);
 
