@@ -17,8 +17,11 @@ const jobSchema = mongoose.Schema(
     status: {
       type: String,
       required: true,
-      enum: [saved, applied, interview, offer, rejected],
+      enum: ["saved", "applied", "interview", "offer", "rejected"],
       default: "saved",
+    },
+    note: {
+      type: String,
     },
     followup: {
       type: Date,

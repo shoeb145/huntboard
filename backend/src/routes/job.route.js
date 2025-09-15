@@ -10,9 +10,7 @@ jobRouter.get("/:id", (req, res) => {
   res.send("specific job");
 });
 
-jobRouter.post("/", (req, res) => {
-  res.send("create job");
-});
+jobRouter.post("/", (req, res) => {});
 jobRouter.put("/", (req, res) => {
   res.send("update");
 });
